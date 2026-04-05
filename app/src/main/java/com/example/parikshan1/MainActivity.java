@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // Pass the image URI as an extra to the new activity
                     intent.putExtra("imageUri", uploadedImageUri.toString());
+                    
                     Log.d("getimage", uploadedImageUri.toString());
 
                     // Start the new activity
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onSuccess(Uri uri) {
                                 // Save the URL to the class-level variable
                                 uploadedImageUri = uri;
-                                Log.d("tag", "onSuccess: Uploaded Image URL is " + uri.toString());
+                                Log.d("firebaseup", "onSuccess: Uploaded Image URL is " + uri);
                             }
                         });
                         Toast.makeText(MainActivity.this, "Image Is Uploaded.", Toast.LENGTH_SHORT).show();

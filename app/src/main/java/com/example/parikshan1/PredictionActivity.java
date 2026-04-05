@@ -26,6 +26,7 @@ public class PredictionActivity extends AppCompatActivity {
     private TextView textViewPrediction;
     private Uri imageUri;
 
+
     ProgressBar pb;
 
     RelativeLayout lay2;
@@ -93,11 +94,13 @@ public class PredictionActivity extends AppCompatActivity {
 
         // Make the API request
         Call<ImageProperties> call = api.predict_terrain(imageUri.toString());
+        Log.d("mainthing",api.predict_terrain(imageUri.toString()).toString());
         call.enqueue(new Callback<ImageProperties>() {
             @Override
             public void onResponse(Call<ImageProperties> call, Response<ImageProperties> response) {
                 if (response.isSuccessful()) {
-                    Picasso.get().load(imageUri.toString()).into(imageView);
+                    Picasso.get().load(imageUri).into(imageView);
+
                     ImageProperties properties = response.body();
                     Log.d("Response", "Predicted Terrain: " + properties.getPredictedTerrain());
                     updateTextView(properties.getPredictedTerrain());
